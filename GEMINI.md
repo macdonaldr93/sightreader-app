@@ -32,6 +32,13 @@ A distraction-free, high-accuracy musical flashcard app that works flawlessly on
   - Below middle line: Stem Up.
 - Added "Only Ledger Lines" mode to support targeted practice.
 
+### 5. Enhanced Game Flow & Scoring
+
+- Moved settings into a focused modal overlay for a distraction-free experience.
+- Implemented a "Right/Wrong" feedback system with Lucide icons (`Check`, `X`).
+- Added real-time score tracking (`correct / total`) in the header.
+- Integrated `lucide-react` for consistent, crisp iconography.
+
 ## Architectural Notes
 
 ### Diatonic Step System

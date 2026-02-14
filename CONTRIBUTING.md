@@ -18,6 +18,12 @@ Thank you for your interest in improving Sight Reader!
    - Run `npm run lint` to check code style.
 7. **Build**: Run `npm run build` to ensure the project compiles correctly.
 
+## Commit Messages
+
+This project uses [Gitmoji](https://gitmoji.dev/) for commit messages. Please use the appropriate emoji at the beginning of your commit message to categorize the change.
+
+Example: `✨ Add new scoring system`
+
 ## Project Structure
 
 - `src/components/`: UI components and their CSS Modules.
