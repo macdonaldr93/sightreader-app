@@ -49,6 +49,14 @@ We use a relative integer system where `C4 = 0`. This allows for easy range calc
 
 The app uses a custom hook `useFlashcardGame` to separate the "game mechanics" (generating notes, revealing answers) from the UI components.
 
+## Development Conventions
+
+### Commit Messages
+
+- We use [Gitmoji](https://gitmoji.dev/) to categorize commits.
+- All commit messages MUST be in **all lowercase**.
+- Example: `✨ add new scoring feature`
+
 ## Deployments
 
 The app is deployed to GitHub Pages at `/sightreader-app/`. The `vite.config.ts` includes the `base` configuration to ensure assets are resolved correctly.
