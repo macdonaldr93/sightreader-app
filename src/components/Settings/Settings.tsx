@@ -33,6 +33,24 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
         </div>
         
         <div className={styles.field}>
+          <label className={styles.label}>Notes</label>
+          <div className={styles.buttonGroup}>
+            <button
+              className={!settings.onlyLedgerLines ? styles.active : ''}
+              onClick={() => onUpdate({ onlyLedgerLines: false })}
+            >
+              All
+            </button>
+            <button
+              className={settings.onlyLedgerLines ? styles.active : ''}
+              onClick={() => onUpdate({ onlyLedgerLines: true })}
+            >
+              Ledger Lines
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.field}>
           <label className={styles.label}>Max Ledger Lines: {settings.maxLedgerLines}</label>
           <input
             type="range"
@@ -42,17 +60,6 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
             onChange={(e) => onUpdate({ maxLedgerLines: parseInt(e.target.value) })}
             className={styles.range}
           />
-        </div>
-
-        <div className={styles.field}>
-          <label className={styles.checkboxLabel}>
-            <input
-              type="checkbox"
-              checked={settings.onlyLedgerLines}
-              onChange={(e) => onUpdate({ onlyLedgerLines: e.target.checked })}
-            />
-            Only Ledger Lines
-          </label>
         </div>
 
         <button className={styles.startButton} onClick={onStart}>

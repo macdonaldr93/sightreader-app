@@ -13,7 +13,7 @@
 }
 
 .modalContent {
-  padding: 2.5rem;
+  padding: var(--spacing-4xl);
   background-color: var(--bg-color);
   border-radius: 0;
   width: 90%;
@@ -25,38 +25,38 @@
 }
 
 .title {
-  font-size: 2.5rem;
-  margin: 0 0 2rem 0;
+  font-size: var(--font-size-3xl);
+  margin: 0 0 var(--spacing-3xl) 0;
   text-align: center;
   font-weight: normal;
 }
 
 .field {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-3xl);
 }
 
 .label {
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--spacing-md);
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: var(--font-size-lg);
 }
 
 .buttonGroup {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .buttonGroup button {
   flex: 1;
-  padding: 0.75rem;
+  padding: var(--spacing-md);
   border: 1px solid var(--border-color);
   background: var(--bg-color);
   color: var(--text-color);
   cursor: pointer;
   border-radius: 0;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
 }
 
 .buttonGroup button.active {
@@ -70,25 +70,10 @@
   cursor: pointer;
 }
 
-.checkboxLabel {
-  display: flex !important;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.checkboxLabel input {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: 0;
-  accent-color: var(--accent-color);
-}
-
 .startButton {
-  margin-top: 1rem;
-  padding: 1rem;
-  font-size: 1.2rem;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-xl);
   background-color: var(--accent-color);
   color: var(--button-hover-text);
   border: none;

@@ -12,11 +12,11 @@
 
 .displayArea {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-3xl);
 }
 
 .feedbackArea {
-  height: 8rem;
+  height: var(--spacing-7xl);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: 400px;
-  padding: 0 1rem;
+  padding: 0 var(--spacing-lg);
   animation: fadeIn 0.2s ease-in;
 }
 
@@ -37,8 +37,8 @@
   background: none;
   border: 2px solid var(--text-color);
   border-radius: 50%;
-  width: 64px;
-  height: 64px;
+  width: var(--spacing-6xl);
+  height: var(--spacing-6xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,13 +62,13 @@
 }
 
 .answer {
-  font-size: 4rem;
+  font-size: var(--font-size-4xl);
   font-weight: bold;
   color: var(--text-color);
 }
 
 .prompt {
-  font-size: 1.2rem;
+  font-size: var(--font-size-xl);
   color: var(--text-muted);
 }
 
