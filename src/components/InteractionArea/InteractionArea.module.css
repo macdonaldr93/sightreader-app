@@ -16,8 +16,7 @@
 }
 
 .feedbackArea {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  height: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
