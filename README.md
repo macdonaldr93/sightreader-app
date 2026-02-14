@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# Sight Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first Progressive Web App (PWA) for practicing musical sight-reading. Master notes on the treble and bass clefs with a clean, distraction-free serif interface.
 
-Currently, two official plugins are available:
+[Live Demo](https://macdonaldr93.github.io/sightreader-app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Treble & Bass Clefs**: Practice on either clef or both simultaneously.
+- **Customizable Difficulty**: Adjust the number of ledger lines (0 to 6) to challenge your reading.
+- **Ledger Line Focus**: Toggle "Only Ledger Lines" mode to specifically target notes outside the standard staff.
+- **Professional Notation**: Powered by VexFlow 5 for accurate musical rendering.
+- **Mobile First**: Designed for touch interaction—tap to reveal the answer, tap again for the next note.
+- **PWA Support**: Install it on your home screen and use it offline.
+- **Light Theme**: A classic black-on-white serif aesthetic for maximum legibility.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Musical Rules
 
-## Expanding the ESLint configuration
+The app follows standard engraving rules for better learning:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Stem Direction**:
+  - Notes below the middle line have stems pointing up (right side).
+  - Notes on or above the middle line have stems pointing down (left side).
+- **Clef Ranges**: Support for up to 6 ledger lines above and below the staff for comprehensive practice.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Node.js (v20 or later recommended)
+- npm
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone the repository:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   git clone https://github.com/macdonaldr93/sightreader-app.git
+   cd sightreader-app
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Development
+
+- **Build**: `npm run build`
+- **Lint**: `npm run lint`
+- **Test**: `npm run test`
+
+## Tech Stack
+
+- **Framework**: React 19 + TypeScript
+- **Bundler**: Vite
+- **Notation**: VexFlow 5
+- **Testing**: Vitest
+- **PWA**: vite-plugin-pwa
+- **Deployment**: GitHub Actions + GitHub Pages
+
+## License
+
+MIT
