@@ -27,11 +27,11 @@ export function getRandomNote(
   let max: number;
 
   if (clef === 'treble') {
-    min = 2 - maxLedgerLines;
-    max = 10 + maxLedgerLines;
+    min = 2 - maxLedgerLines * 2;
+    max = 10 + maxLedgerLines * 2;
   } else {
-    min = -10 - maxLedgerLines;
-    max = -2 + maxLedgerLines;
+    min = -10 - maxLedgerLines * 2;
+    max = -2 + maxLedgerLines * 2;
   }
 
   let step: number;
@@ -83,16 +83,16 @@ export function getNoteRange(settings: GameSettings): { min: number; max: number
   let max = 0;
 
   if (clef === 'treble') {
-    min = 2 - maxLedgerLines;
-    max = 10 + maxLedgerLines;
+    min = 2 - maxLedgerLines * 2;
+    max = 10 + maxLedgerLines * 2;
   } else if (clef === 'bass') {
-    min = -10 - maxLedgerLines;
-    max = -2 + maxLedgerLines;
+    min = -10 - maxLedgerLines * 2;
+    max = -2 + maxLedgerLines * 2;
   } else {
-    const trebleMin = 2 - maxLedgerLines;
-    const trebleMax = 10 + maxLedgerLines;
-    const bassMin = -10 - maxLedgerLines;
-    const bassMax = -2 + maxLedgerLines;
+    const trebleMin = 2 - maxLedgerLines * 2;
+    const trebleMax = 10 + maxLedgerLines * 2;
+    const bassMin = -10 - maxLedgerLines * 2;
+    const bassMax = -2 + maxLedgerLines * 2;
     return {
       min: Math.min(trebleMin, bassMin),
       max: Math.max(trebleMax, bassMax),

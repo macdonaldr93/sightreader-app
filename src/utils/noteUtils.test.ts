@@ -28,8 +28,8 @@ describe('noteUtils', () => {
     for (let i = 0; i < 100; i++) {
       const note = getRandomNote('treble', maxLedgerLines);
       const step = getDiatonicStep(note);
-      expect(step).toBeGreaterThanOrEqual(1);
-      expect(step).toBeLessThanOrEqual(11);
+      expect(step).toBeGreaterThanOrEqual(0);
+      expect(step).toBeLessThanOrEqual(12);
     }
   });
 
@@ -38,8 +38,8 @@ describe('noteUtils', () => {
     for (let i = 0; i < 100; i++) {
       const note = getRandomNote('bass', maxLedgerLines);
       const step = getDiatonicStep(note);
-      expect(step).toBeGreaterThanOrEqual(-11);
-      expect(step).toBeLessThanOrEqual(-1);
+      expect(step).toBeGreaterThanOrEqual(-12);
+      expect(step).toBeLessThanOrEqual(0);
     }
   });
 
@@ -95,9 +95,9 @@ describe('noteUtils', () => {
       timeLimitEnabled: false,
       timeLimitSeconds: 10,
     };
-    expect(getNoteRange(settings)).toEqual({ min: 1, max: 11 });
+    expect(getNoteRange(settings)).toEqual({ min: 0, max: 12 });
 
-    expect(getNoteRange({ ...settings, clef: 'bass' })).toEqual({ min: -11, max: -1 });
-    expect(getNoteRange({ ...settings, clef: 'both' })).toEqual({ min: -11, max: 11 });
+    expect(getNoteRange({ ...settings, clef: 'bass' })).toEqual({ min: -12, max: 0 });
+    expect(getNoteRange({ ...settings, clef: 'both' })).toEqual({ min: -12, max: 12 });
   });
 });
