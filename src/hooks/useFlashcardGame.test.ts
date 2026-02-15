@@ -61,4 +61,105 @@ describe('useFlashcardGame', () => {
     
     expect(result.current.isSettingsOpen).toBe(true);
   });
+
+  it('should handle review mode logic', () => {
+    const { result } = renderHook(() => useFlashcardGame(initialSettings));
+    
+    act(() => {
+      result.current.startGame();
+    });
+
+    const firstNote = result.current.currentNote;
+    const firstClef = result.current.currentClef;
+
+    act(() => {
+      result.current.markIncorrect();
+    });
+
+    expect(result.current.canReview).toBe(true);
+    expect(result.current.isReviewMode).toBe(false);
+
+    act(() => {
+      result.current.toggleReview();
+    });
+
+    expect(result.current.isReviewMode).toBe(true);
+    expect(result.current.reviewQueueSize).toBe(1);
+    expect(result.current.currentNote).toEqual(firstNote);
+    expect(result.current.currentClef).toEqual(firstClef);
+
+    act(() => {
+      result.current.toggleReview();
+    });
+
+    expect(result.current.isReviewMode).toBe(false);
+    expect(result.current.canReview).toBe(true);
+
+    act(() => {
+      result.current.toggleReview();
+    });
+
+    expect(result.current.isReviewMode).toBe(true);
+
+    act(() => {
+      result.current.markIncorrect();
+    });
+
+    expect(result.current.isReviewMode).toBe(true);
+    expect(result.current.reviewQueueSize).toBe(1);
+    expect(result.current.currentNote).toEqual(firstNote);
+
+    act(() => {
+      result.current.markCorrect();
+    });
+
+    expect(result.current.isReviewMode).toBe(false);
+    expect(result.current.reviewQueueSize).toBe(0);
+    expect(result.current.canReview).toBe(false);
+  });
+
+  it('should handle multiple notes in review mode', () => {
+    const { result } = renderHook(() => useFlashcardGame(initialSettings));
+    
+    act(() => {
+      result.current.startGame();
+    });
+
+    const note1 = { ...result.current.currentNote };
+
+    act(() => {
+      result.current.markIncorrect();
+    });
+
+    const note2 = { ...result.current.currentNote };
+
+    act(() => {
+      result.current.markIncorrect();
+    });
+
+    expect(result.current.canReview).toBe(true);
+
+    act(() => {
+      result.current.toggleReview();
+    });
+
+    expect(result.current.reviewQueueSize).toBe(2);
+
+    const currentInReview = result.current.currentNote;
+    expect([note1.diatonicStep, note2.diatonicStep]).toContain(currentInReview.diatonicStep);
+
+    act(() => {
+      result.current.markCorrect();
+    });
+
+    expect(result.current.reviewQueueSize).toBe(1);
+    expect(result.current.isReviewMode).toBe(true);
+
+    act(() => {
+      result.current.markCorrect();
+    });
+
+    expect(result.current.isReviewMode).toBe(false);
+    expect(result.current.reviewQueueSize).toBe(0);
+  });
 });

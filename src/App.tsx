@@ -1,4 +1,5 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
+import { useWindowSize } from 'react-use';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import { GameControls } from './components/GameControls/GameControls';
 import { ProgressBar } from './components/ProgressBar/ProgressBar';
@@ -8,8 +9,11 @@ import { useFlashcardGame } from './hooks/useFlashcardGame';
 import styles from './App.module.css';
 
 const NoteRenderer = React.lazy(() => import('./components/NoteRenderer/NoteRenderer').then(m => ({ default: m.NoteRenderer })));
+const Confetti = React.lazy(() => import('react-confetti'));
 
 function App() {
+  const { width, height } = useWindowSize();
+
   const {
     currentNote,
     currentClef,
@@ -21,6 +25,9 @@ function App() {
     settings,
     score,
     isSettingsOpen,
+    isReviewMode,
+    isReviewFinished,
+    canReview,
     revealAnswer,
     markCorrect,
     markIncorrect,
@@ -28,6 +35,8 @@ function App() {
     startGame,
     resetGame,
     updateSettings,
+    toggleReview,
+    clearFinished,
   } = useFlashcardGame({
     clef: 'treble',
     maxLedgerLines: 1,
@@ -35,6 +44,15 @@ function App() {
     timeLimitEnabled: false,
     timeLimitSeconds: 10,
   });
+
+  useEffect(() => {
+    if (isReviewFinished) {
+      const timer = setTimeout(() => {
+        clearFinished();
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isReviewFinished, clearFinished]);
 
   const handleTap = () => {
     if (!isAnswerRevealed) {
@@ -44,6 +62,18 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <Suspense fallback={null}>
+        {isReviewFinished && (
+          <Confetti
+            width={width}
+            height={height}
+            recycle={false}
+            numberOfPieces={200}
+            initialVelocityY={7}
+
+          />
+        )}
+      </Suspense>
       <ProgressBar
         progress={timerProgress}
         isRunning={timerIsRunning}
@@ -52,7 +82,15 @@ function App() {
       />
 
       <main className={styles.main}>
-        <Scoreboard score={score} onReset={resetGame} />
+        <div className={styles.topRow}>
+          <Scoreboard
+            score={score}
+            onReset={resetGame}
+            canReview={canReview}
+            isReviewMode={isReviewMode}
+            onReview={toggleReview}
+          />
+        </div>
         <Suspense fallback={<NoteRendererSkeleton />}>
           <NoteRenderer
             note={currentNote}

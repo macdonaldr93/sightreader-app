@@ -11,6 +11,7 @@ Thank you for your interest in improving Ledger!
 5. **Develop**:
    - Follow the established black-on-white serif aesthetic.
    - Use CSS Modules and CSS Variables.
+   - Use `clsx` for conditional CSS classes.
    - Maintain the "Smart Hook / Dumb Component" architecture.
 6. **Test**:
    - Add unit tests in `src/utils/` or `src/hooks/` if you add new logic.

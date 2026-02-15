@@ -35,7 +35,6 @@ describe('useNoteSelection', () => {
     });
 
     expect(result.current.isAnswerRevealed).toBe(false);
-    // Note: there is a small chance it generates the same note, but it should still work.
   });
 
   it('should use bass clef when settings say bass', () => {
@@ -44,14 +43,13 @@ describe('useNoteSelection', () => {
   });
 
   it('should pick from both clefs when settings say both', () => {
-    // Mock Math.random to test 'both'
     const randomSpy = vi.spyOn(Math, 'random');
 
-    randomSpy.mockReturnValue(0.1); // < 0.5 -> bass
+    randomSpy.mockReturnValue(0.1);
     const { result: res1 } = renderHook(() => useNoteSelection({ ...settings, clef: 'both' }));
     expect(res1.current.currentClef).toBe('bass');
 
-    randomSpy.mockReturnValue(0.9); // > 0.5 -> treble
+    randomSpy.mockReturnValue(0.9);
     const { result: res2 } = renderHook(() => useNoteSelection({ ...settings, clef: 'both' }));
     expect(res2.current.currentClef).toBe('treble');
 

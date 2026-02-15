@@ -25,8 +25,6 @@ describe('useTimer', () => {
       vi.advanceTimersByTime(1000);
     });
     
-    // In the new implementation, timeLeft only updates when paused or expired
-    // to allow CSS to handle smoothness.
     rerender({ enabled: false });
     
     expect(result.current.timeLeft).toBeLessThan(10);

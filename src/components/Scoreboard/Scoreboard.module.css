@@ -1,9 +1,10 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: var(--spacing-sm) 0;
   gap: var(--spacing-2xl);
-  justify-content: flex-end;
+  width: 100%;
 }
 
 .score {
@@ -12,7 +13,14 @@
   font-family: var(--font-serif);
 }
 
-.restartButton {
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actionButton {
   background: none;
   border: 2px solid transparent;
   border-radius: 50%;
@@ -22,12 +30,21 @@
   justify-content: center;
   cursor: pointer;
   color: var(--text-color);
-  transition: transform 0.2s;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
-.restartButton:active,
-.restartButton:focus,
-.restartButton:hover {
+.actionButton:active,
+.actionButton:focus,
+.actionButton:hover {
   border-color: var(--border-color);
+}
+
+.actionButton.active {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-color: var(--border-color);
+}
+
+.actionButton[aria-label="Reset game"]:hover {
   transform: rotate(-180deg);
 }

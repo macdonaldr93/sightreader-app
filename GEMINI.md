@@ -60,6 +60,27 @@ A distraction-free, high-accuracy musical flashcard app that works flawlessly on
 - Achieved >97% test coverage and standardized on Vitest globals for a better developer experience.
 - Refined the progress bar with CSS-driven transitions for better performance.
 
+### 9. Review Incorrect Mode
+
+- Implemented a "Review Incorrect" feature to allow targeted practice of missed notes.
+- Added logic to `useFlashcardGame` to track unique missed notes and manage a randomized review queue.
+- Introduced a manual override capability in `useNoteSelection` to support queue-driven presentation.
+- Updated the `Scoreboard` with a "Review" button (GraduationCap icon) that appears when missed notes are available.
+- Added a visual "Review Mode" badge to provide clear context during targeted practice.
+- Guaranteed that the game returns to normal generation only after all review items are correctly answered.
+- Refactored review mode logic into a standalone `useReviewMode` hook for better maintainability and testability.
+- Updated the `Scoreboard` with a "Review" button (`ListX` icon) that toggles review mode on and off.
+- Enhanced the review button with an active visual state (inverted colors) to clearly indicate when review mode is active.
+- Improved review mode UX: toggling review mode off returns the remaining queue to the missed notes list for later practice.
+- Fixed a bug where the review button would disappear prematurely when answering the last note in review mode.
+- Integrated `react-confetti` (lazily loaded) to celebrate with a confetti blast upon successfully completing a review session.
+
+### 10. Standardized Styling & Code Quality
+
+- Standardized conditional class management by integrating `clsx` across all components.
+- Performed a codebase-wide cleanup of unnecessary comments and dead code to maintain a high signal-to-noise ratio.
+- Updated developer documentation (`CONTRIBUTING.md`) to reflect the adoption of `clsx`.
+
 ## Architectural Notes
 
 ### Screen Constraints

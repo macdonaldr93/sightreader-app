@@ -22,6 +22,11 @@ export function useNoteSelection(settings: GameSettings) {
     setIsAnswerRevealed(false);
   }, [generateNote, settings]);
 
+  const setNote = useCallback((note: Note, clef: Clef) => {
+    setGameState({ note, clef });
+    setIsAnswerRevealed(false);
+  }, []);
+
   const revealAnswer = useCallback(() => {
     setIsAnswerRevealed(true);
   }, []);
@@ -31,6 +36,7 @@ export function useNoteSelection(settings: GameSettings) {
     currentClef: gameState.clef,
     isAnswerRevealed,
     nextNote,
+    setNote,
     revealAnswer,
   };
 }
