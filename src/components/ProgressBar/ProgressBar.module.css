@@ -1,10 +1,11 @@
 .container {
-  width: 100%;
+  width: 100vw;
   height: 4px;
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 2000;
 }
 
 .bar {
