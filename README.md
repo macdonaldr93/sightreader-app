@@ -13,6 +13,7 @@ A mobile-first Progressive Web App (PWA) for practicing musical sight-reading. M
 - **Dropdown Settings**: A space-efficient setup menu that stays out of the way during practice.
 - **Customizable Difficulty**: Adjust the number of ledger lines (0 to 6) to challenge your reading.
 - **Ledger Line Focus**: Toggle "Only Ledger Lines" mode to specifically target notes outside the standard staff.
+- **Practice History**: Tracks total practice time and weekly progress using localStorage.
 - **Professional Notation**: Powered by VexFlow 5 for accurate musical rendering.
 - **Mobile First**: Designed for touch interaction—tap to reveal, then select if you were right or wrong. Optimized for screens as small as **352x339px** (Samsung Z-Flip 6 front cover).
 - **PWA Support**: Install it on your home screen and use it offline.

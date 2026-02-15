@@ -82,6 +82,13 @@ A distraction-free, high-accuracy musical flashcard app that works flawlessly on
 - Standardized code formatting by adding a `fmt` script using Prettier and updated `CONTRIBUTING.md` accordingly.
 - Updated developer documentation (`CONTRIBUTING.md`) to reflect the adoption of `clsx`.
 
+### 11. Practice Time Tracking
+
+- Implemented a practice session tracker that persists data to `localStorage`.
+- Added "This Week" and "Total" practice time statistics to the Settings menu.
+- Integrated `date-fns` for accurate weekly period calculations.
+- Implemented human-readable duration formatting supporting seconds, minutes, hours, and days.
+
 ## Architectural Notes
 
 ### Screen Constraints

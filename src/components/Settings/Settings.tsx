@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import clsx from 'clsx';
 import type { GameSettings } from '../../types/musical';
+import { formatDuration } from '../../utils/timeUtils';
 import styles from './Settings.module.css';
 
 interface SettingsProps {
@@ -9,9 +10,18 @@ interface SettingsProps {
   onUpdate: (newSettings: Partial<GameSettings>) => void;
   onStart: () => void;
   isOpen: boolean;
+  totalSeconds?: number;
+  thisWeekSeconds?: number;
 }
 
-export function Settings({ settings, onUpdate, onStart, isOpen }: SettingsProps) {
+export function Settings({
+  settings,
+  onUpdate,
+  onStart,
+  isOpen,
+  totalSeconds = 0,
+  thisWeekSeconds = 0,
+}: SettingsProps) {
   const [isSettingsExpanded, setIsSettingsExpanded] = useState(false);
 
   if (!isOpen) return null;
@@ -31,6 +41,17 @@ export function Settings({ settings, onUpdate, onStart, isOpen }: SettingsProps)
         <button className={styles.startButton} onClick={onStart}>
           Start Game
         </button>
+
+        <div className={styles.statsContainer}>
+          <div className={styles.statItem}>
+            <span className={styles.statLabel}>This Week</span>
+            <span className={styles.statValue}>{formatDuration(thisWeekSeconds)}</span>
+          </div>
+          <div className={styles.statItem}>
+            <span className={styles.statLabel}>Total</span>
+            <span className={styles.statValue}>{formatDuration(totalSeconds)}</span>
+          </div>
+        </div>
 
         <div className={styles.dropdownContainer}>
           <button

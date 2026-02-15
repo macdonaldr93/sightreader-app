@@ -6,6 +6,7 @@ import { ProgressBar } from './components/ProgressBar/ProgressBar';
 import { Settings } from './components/Settings/Settings';
 import { NoteRendererSkeleton } from './components/NoteRenderer/NoteRendererSkeleton';
 import { useFlashcardGame } from './hooks/useFlashcardGame';
+import { usePracticeTracker } from './hooks/usePracticeTracker';
 import styles from './App.module.css';
 
 const NoteRenderer = React.lazy(() =>
@@ -46,6 +47,8 @@ function App() {
     timeLimitEnabled: false,
     timeLimitSeconds: 10,
   });
+
+  const { totalSeconds, thisWeekSeconds } = usePracticeTracker(!isSettingsOpen);
 
   useEffect(() => {
     if (isReviewFinished) {
@@ -114,6 +117,8 @@ function App() {
           onUpdate={updateSettings}
           onStart={startGame}
           isOpen={isSettingsOpen}
+          totalSeconds={totalSeconds}
+          thisWeekSeconds={thisWeekSeconds}
         />
       </div>
     </>

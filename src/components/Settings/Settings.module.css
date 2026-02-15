@@ -34,7 +34,6 @@
 }
 
 .startButton {
-  margin-bottom: var(--spacing-xl);
   padding: var(--spacing-lg);
   font-size: var(--font-size-xl);
   background-color: var(--accent-color);
@@ -47,6 +46,34 @@
 
 .startButton:active {
   opacity: 0.8;
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg) 0;
+  gap: var(--spacing-xs);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--text-color);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.statValue {
+  font-size: var(--font-size-xl);
+  font-weight: normal;
 }
 
 .dropdownContainer {
