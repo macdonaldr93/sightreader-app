@@ -6,6 +6,7 @@ export interface Note {
   name: NoteName;
   octave: number;
   accidental?: string;
+  diatonicStep: number;
 }
 
 export interface GameSettings {

@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
 import { useNoteSelection } from './useNoteSelection';
 import type { GameSettings } from '../types/musical';
 

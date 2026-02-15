@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  gap: var(--spacing-2xl);
+  justify-content: flex-end;
+}
+
+.score {
+  font-size: var(--font-size-2xl);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-serif);
+}
+
+.restartButton {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: transform 0.2s;
+}
+
+.restartButton:active,
+.restartButton:focus,
+.restartButton:hover {
+  border-color: var(--border-color);
+  transform: rotate(-180deg);
+}

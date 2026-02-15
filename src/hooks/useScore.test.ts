@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
 import { useScore } from './useScore';
 
 describe('useScore', () => {

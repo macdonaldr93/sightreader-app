@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { useSettings } from './useSettings';
 import type { GameSettings } from '../types/musical';
 
@@ -29,6 +28,15 @@ describe('useSettings', () => {
 
     const { result } = renderHook(() => useSettings(initialSettings));
     expect(result.current.settings.maxLedgerLines).toBe(3);
+  });
+
+  it('should fall back to initial settings if localStorage is invalid', () => {
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    localStorage.setItem('ledger_settings', 'invalid-json');
+
+    const { result } = renderHook(() => useSettings(initialSettings));
+    expect(result.current.settings).toEqual(initialSettings);
+    expect(consoleSpy).toHaveBeenCalled();
   });
 
   it('should save settings to localStorage when updated', () => {

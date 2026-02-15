@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { useTimer } from './useTimer';
 
 describe('useTimer', () => {
@@ -43,6 +42,24 @@ describe('useTimer', () => {
     });
     
     expect(onTimeout).toHaveBeenCalled();
+  });
+
+  it('should use the latest onTimeout callback', () => {
+    const onTimeout1 = vi.fn();
+    const onTimeout2 = vi.fn();
+    const { rerender } = renderHook(
+      ({ onTimeout }) => useTimer(true, 1, onTimeout),
+      { initialProps: { onTimeout: onTimeout1 } }
+    );
+    
+    rerender({ onTimeout: onTimeout2 });
+    
+    act(() => {
+      vi.advanceTimersByTime(1100);
+    });
+    
+    expect(onTimeout1).not.toHaveBeenCalled();
+    expect(onTimeout2).toHaveBeenCalled();
   });
 
   it('should reset time', () => {
