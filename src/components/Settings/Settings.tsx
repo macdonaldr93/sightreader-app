@@ -15,12 +15,12 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h1 className={styles.title}>Sight Reader</h1>
-        
+        <h1 className={styles.title}>Ledger</h1>
+
         <div className={styles.field}>
           <label className={styles.label}>Clef</label>
           <div className={styles.buttonGroup}>
-            {(['treble', 'bass', 'both'] as const).map(c => (
+            {(['treble', 'bass', 'both'] as const).map((c) => (
               <button
                 key={c}
                 className={settings.clef === c ? styles.active : ''}
@@ -31,7 +31,7 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
             ))}
           </div>
         </div>
-        
+
         <div className={styles.field}>
           <label className={styles.label}>Notes</label>
           <div className={styles.buttonGroup}>

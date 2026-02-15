@@ -1,73 +1,38 @@
-import { useState, useCallback } from 'react';
-import type { Clef, Note, GameSettings } from '../types/musical';
-import { getRandomNote } from '../utils/noteUtils';
+import { useCallback } from 'react';
+import type { GameSettings } from '../types/musical';
+import { useScore } from './useScore';
+import { useSettings } from './useSettings';
+import { useNoteSelection } from './useNoteSelection';
 
 export function useFlashcardGame(initialSettings: GameSettings) {
-  const [settings, setSettings] = useState<GameSettings>(initialSettings);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(true);
-  const [score, setScore] = useState({ correct: 0, total: 0 });
-  
-  const generateNote = useCallback((currentSettings: GameSettings): { note: Note, clef: Clef } => {
-    const clef: Clef = currentSettings.clef === 'both' 
-      ? (Math.random() > 0.5 ? 'treble' : 'bass') 
-      : currentSettings.clef;
-    
-    return {
-      note: getRandomNote(clef, currentSettings.maxLedgerLines, currentSettings.onlyLedgerLines),
-      clef
-    };
-  }, []);
-
-  const [gameState, setGameState] = useState(() => {
-    const { note, clef } = generateNote(initialSettings);
-    return {
-      currentNote: note,
-      currentClef: clef,
-      isAnswerRevealed: false,
-    };
-  });
-
-  const nextNote = useCallback(() => {
-    setGameState(() => {
-      const { note, clef } = generateNote(settings);
-      return {
-        currentNote: note,
-        currentClef: clef,
-        isAnswerRevealed: false,
-      };
-    });
-  }, [generateNote, settings]);
-
-  const revealAnswer = useCallback(() => {
-    setGameState(prev => ({ ...prev, isAnswerRevealed: true }));
-  }, []);
+  const { settings, isSettingsOpen, updateSettings, openSettings, closeSettings } = useSettings(initialSettings);
+  const { score, incrementCorrect, incrementTotal, resetScore } = useScore();
+  const { currentNote, currentClef, isAnswerRevealed, nextNote, revealAnswer } = useNoteSelection(settings);
 
   const markCorrect = useCallback(() => {
-    setScore(prev => ({ correct: prev.correct + 1, total: prev.total + 1 }));
+    incrementCorrect();
     nextNote();
-  }, [nextNote]);
+  }, [incrementCorrect, nextNote]);
 
   const markIncorrect = useCallback(() => {
-    setScore(prev => ({ ...prev, total: prev.total + 1 }));
+    incrementTotal();
     nextNote();
-  }, [nextNote]);
+  }, [incrementTotal, nextNote]);
 
   const startGame = useCallback(() => {
-    setIsSettingsOpen(false);
-    setScore({ correct: 0, total: 0 });
+    closeSettings();
+    resetScore();
     nextNote();
-  }, [nextNote]);
+  }, [closeSettings, resetScore, nextNote]);
 
   const resetGame = useCallback(() => {
-    setIsSettingsOpen(true);
-  }, []);
-
-  const updateSettings = useCallback((newSettings: Partial<GameSettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
-  }, []);
+    openSettings();
+  }, [openSettings]);
 
   return {
-    ...gameState,
+    currentNote,
+    currentClef,
+    isAnswerRevealed,
     settings,
     score,
     isSettingsOpen,
