@@ -58,12 +58,12 @@ describe('usePracticeTracker', () => {
     );
 
     const { result } = renderHook(() => usePracticeTracker(false));
-    
+
     // startOfWeek(Feb 15) is Feb 15 (Sunday)
     // Wait, date-fns startOfWeek(Feb 15) is Feb 15.
     // So "this week" includes today and anything after Feb 15 00:00.
-    
+
     expect(result.current.totalSeconds).toBe(1800);
-    expect(result.current.thisWeekSeconds).toBe(100); 
+    expect(result.current.thisWeekSeconds).toBe(100);
   });
 });

@@ -15,9 +15,9 @@ Thank you for your interest in improving Ledger!
    - Maintain the "Smart Hook / Dumb Component" architecture.
 6. **Test**:
    - Add unit tests in `src/utils/` or `src/hooks/` if you add new logic.
-       - Run `npm test` to ensure everything passes.
-       - Run `npm run fmt` to format your code.
-       - Run `npm run lint` to check code style.7. **Build**: Run `npm run build` to ensure the project compiles correctly.
+     - Run `npm test` to ensure everything passes.
+     - Run `npm run fmt` to format your code.
+     - Run `npm run lint` to check code style.7. **Build**: Run `npm run build` to ensure the project compiles correctly.
 
 ## Commit Messages
 

@@ -69,11 +69,7 @@ export function GameControls({
             )}
           </div>
         ) : (
-          <button
-            className={styles.promptButton}
-            onClick={onTap}
-            aria-label="Reveal answer"
-          >
+          <button className={styles.promptButton} onClick={onTap} aria-label="Reveal answer">
             Tap to reveal
           </button>
         )}
