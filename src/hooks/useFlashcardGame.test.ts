@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
 import { useFlashcardGame } from './useFlashcardGame';
 import type { GameSettings } from '../types/musical';
 

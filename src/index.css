@@ -35,6 +35,9 @@
   --font-size-3xl: 2rem;
   --font-size-4xl: 4rem;
 
+  /* Height */
+  --progress-bar-height: 6px;
+
   font-family: var(--font-serif);
   line-height: 1.5;
   font-weight: 400;
@@ -52,6 +55,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  padding-top: var(--progress-bar-height);
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-color);
@@ -60,6 +64,7 @@ body {
 
 #root {
   width: 100%;
+  height: 100%;
 }
 
 * {
@@ -78,10 +83,7 @@ button {
   cursor: pointer;
   transition: all 0.2s;
 }
-button:hover {
-  background-color: var(--button-hover-bg);
-  color: var(--button-hover-text);
-}
+
 button:focus,
 button:focus-visible {
   outline: 2px solid var(--border-color);

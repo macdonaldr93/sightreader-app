@@ -8,7 +8,7 @@ interface ProgressBarProps {
   visible: boolean;
 }
 
-export const ProgressBar: React.FC<ProgressBarProps> = ({ progress, isRunning, timeLeft, visible }) => {
+export function ProgressBar({ progress, isRunning, timeLeft, visible }: ProgressBarProps) {
   if (!visible) return <div className={styles.container} />;
 
   const style: React.CSSProperties = isRunning 
@@ -29,4 +29,4 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ progress, isRunning, t
       />
     </div>
   );
-};
+}

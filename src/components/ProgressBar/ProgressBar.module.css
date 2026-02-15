@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 4px;
+  height: var(--progress-bar-height);
   background-color: transparent;
   position: fixed;
   top: 0;

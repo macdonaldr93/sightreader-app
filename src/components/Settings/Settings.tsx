@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import clsx from 'clsx';
 import type { GameSettings } from '../../types/musical';
 import styles from './Settings.module.css';
 
@@ -10,7 +11,7 @@ interface SettingsProps {
   isOpen: boolean;
 }
 
-export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart, isOpen }) => {
+export function Settings({ settings, onUpdate, onStart, isOpen }: SettingsProps) {
   const [isSettingsExpanded, setIsSettingsExpanded] = useState(false);
 
   if (!isOpen) return null;
@@ -43,7 +44,7 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
                   {(['treble', 'bass', 'both'] as const).map((c) => (
                     <button
                       key={c}
-                      className={settings.clef === c ? styles.active : ''}
+                      className={clsx({ [styles.active]: settings.clef === c })}
                       onClick={() => onUpdate({ clef: c })}
                       aria-pressed={settings.clef === c}
                     >
@@ -57,14 +58,14 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
                 <label className={styles.label}>Notes</label>
                 <div className={styles.buttonGroup}>
                   <button
-                    className={!settings.onlyLedgerLines ? styles.active : ''}
+                    className={clsx({ [styles.active]: !settings.onlyLedgerLines })}
                     onClick={() => onUpdate({ onlyLedgerLines: false })}
                     aria-pressed={!settings.onlyLedgerLines}
                   >
                     All
                   </button>
                   <button
-                    className={settings.onlyLedgerLines ? styles.active : ''}
+                    className={clsx({ [styles.active]: settings.onlyLedgerLines })}
                     onClick={() => onUpdate({ onlyLedgerLines: true })}
                     aria-pressed={settings.onlyLedgerLines}
                   >
@@ -115,4 +116,4 @@ export const Settings: React.FC<SettingsProps> = ({ settings, onUpdate, onStart,
       </div>
     </div>
   );
-};
+}
