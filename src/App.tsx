@@ -1,10 +1,13 @@
+import React, { Suspense } from 'react';
 import { Scoreboard } from './components/Scoreboard/Scoreboard';
 import { GameControls } from './components/GameControls/GameControls';
-import { NoteRenderer } from './components/NoteRenderer/NoteRenderer';
 import { ProgressBar } from './components/ProgressBar/ProgressBar';
 import { Settings } from './components/Settings/Settings';
+import { NoteRendererSkeleton } from './components/NoteRenderer/NoteRendererSkeleton';
 import { useFlashcardGame } from './hooks/useFlashcardGame';
 import styles from './App.module.css';
+
+const NoteRenderer = React.lazy(() => import('./components/NoteRenderer/NoteRenderer').then(m => ({ default: m.NoteRenderer })));
 
 function App() {
   const {
@@ -50,11 +53,13 @@ function App() {
 
       <main className={styles.main}>
         <Scoreboard score={score} onReset={resetGame} />
-        <NoteRenderer 
-          note={currentNote} 
-          clef={currentClef} 
-          onClick={handleTap}
-        />
+        <Suspense fallback={<NoteRendererSkeleton />}>
+          <NoteRenderer
+            note={currentNote}
+            clef={currentClef}
+            onClick={handleTap}
+          />
+        </Suspense>
         <GameControls
           isAnswerRevealed={isAnswerRevealed}
           isTimeExpired={isTimeExpired}

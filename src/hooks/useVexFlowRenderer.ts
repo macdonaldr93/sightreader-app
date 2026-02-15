@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Renderer, Stave, StaveNote, Formatter, Voice, Accidental } from 'vexflow';
+import { Renderer, Stave, StaveNote, Formatter, Voice, Accidental } from 'vexflow/bravura';
 import type { Note, Clef } from '../types/musical';
 import { getStemDirection } from '../utils/noteUtils';
 
