@@ -20,9 +20,9 @@ Thank you for your interest in improving Sight Reader!
 
 ## Commit Messages
 
-This project uses [Gitmoji](https://gitmoji.dev/) for commit messages. Please use the appropriate emoji at the beginning of your commit message to categorize the change.
+This project uses [Gitmoji](https://gitmoji.dev/) for commit messages. Please use the appropriate emoji at the beginning of your commit message to categorize the change. All commit messages MUST be in **all lowercase**.
 
-Example: `✨ Add new scoring system`
+Example: `✨ add new scoring system`
 
 ## Project Structure
 

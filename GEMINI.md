@@ -39,6 +39,12 @@ A distraction-free, high-accuracy musical flashcard app that works flawlessly on
 - Added real-time score tracking (`correct / total`) in the header.
 - Integrated `lucide-react` for consistent, crisp iconography.
 
+### 6. Timed Practice & Persistence
+
+- Added a session timer feature to challenge users with time-constrained practice.
+- Implemented settings persistence using `localStorage` to ensure user preferences (clef, difficulty, ledger lines) survive page reloads.
+- Refined the settings UI for better clarity and touch-friendliness on mobile.
+
 ## Architectural Notes
 
 ### Diatonic Step System
