@@ -36,7 +36,7 @@
   --font-size-4xl: 4rem;
 
   /* Height */
-  --progress-bar-height: 6px;
+  --progress-bar-height: 4px;
 
   font-family: var(--font-serif);
   line-height: 1.5;
@@ -55,7 +55,6 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  padding-top: var(--progress-bar-height);
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-color);

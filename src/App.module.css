@@ -9,11 +9,23 @@
   position: relative;
 }
 
+@media only screen and (max-height: 380px) {
+  .app {
+    padding: var(--spacing-xs) var(--spacing-lg);
+  }
+}
+
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg);
+}
+
+@media only screen and (max-height: 380px) {
+  .main {
+    gap: var(--spacing-md);
+  }
 }
 
 .topRow {
