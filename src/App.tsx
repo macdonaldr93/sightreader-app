@@ -16,7 +16,7 @@ const NoteRenderer = React.lazy(() =>
 );
 const Confetti = React.lazy(() => import('react-confetti'));
 
-function App() {
+export function App() {
   const { width, height } = useWindowSize();
 
   const {
@@ -145,5 +145,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -7,7 +7,7 @@ interface ResumeOverlayProps {
   onResume: () => void;
 }
 
-export const ResumeOverlay: React.FC<ResumeOverlayProps> = ({ isVisible, onResume }) => {
+export function ResumeOverlay({ isVisible, onResume }: ResumeOverlayProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ export const ResumeOverlay: React.FC<ResumeOverlayProps> = ({ isVisible, onResum
       </div>
     </div>
   );
-};
+}
