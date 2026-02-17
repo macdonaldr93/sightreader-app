@@ -53,31 +53,6 @@
   border-color: var(--border-color);
 }
 
-.badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--text-color);
-  color: var(--bg-color);
-  font-size: 10px;
-  min-width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-weight: bold;
-  transform: translate(25%, -25%);
-  border: 1px solid var(--bg-color);
-}
-
-.actionButton.active .badge {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-color: var(--text-color);
-}
-
 .actionButton[aria-label='Reset game']:hover {
   transform: rotate(-180deg);
 }

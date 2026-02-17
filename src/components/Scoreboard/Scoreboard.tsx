@@ -8,7 +8,6 @@ interface ScoreboardProps {
   canReview: boolean;
   isReviewMode: boolean;
   onReview: () => void;
-  reviewCount: number;
 }
 
 export function Scoreboard({
@@ -17,7 +16,6 @@ export function Scoreboard({
   canReview,
   isReviewMode,
   onReview,
-  reviewCount,
 }: ScoreboardProps) {
   return (
     <div className={styles.header}>
@@ -35,7 +33,6 @@ export function Scoreboard({
           aria-label="Review missed notes"
         >
           <ListX size={24} />
-          {reviewCount > 0 && <span className={styles.badge}>{reviewCount}</span>}
         </button>
       </div>
     </div>

@@ -33,8 +33,6 @@ function App() {
     isSettingsOpen,
     isReviewMode,
     isReviewFinished,
-    reviewQueueSize,
-    incorrectNotesCount,
     canReview,
     revealAnswer,
     markCorrect,
@@ -116,7 +114,6 @@ function App() {
               canReview={canReview}
               isReviewMode={isReviewMode}
               onReview={toggleReview}
-              reviewCount={isReviewMode ? reviewQueueSize : incorrectNotesCount}
             />
           </div>
           <Suspense fallback={<NoteRendererSkeleton />}>

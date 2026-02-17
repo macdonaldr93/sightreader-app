@@ -219,7 +219,6 @@ export function useFlashcardGame(initialSettings: GameSettings, height?: number)
     isReviewMode,
     isReviewFinished,
     reviewQueueSize,
-    incorrectNotesCount: incorrectNotes.length,
     canReview,
     nextNote: handleNextNote,
     revealAnswer,
