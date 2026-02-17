@@ -4,7 +4,7 @@ import styles from './Scoreboard.module.css';
 
 interface ScoreboardProps {
   score: { correct: number; total: number };
-  onRestart: () => void;
+  onReset: () => void;
   canReview: boolean;
   isReviewMode: boolean;
   onReview: () => void;
@@ -13,7 +13,7 @@ interface ScoreboardProps {
 
 export function Scoreboard({
   score,
-  onRestart,
+  onReset,
   canReview,
   isReviewMode,
   onReview,
@@ -36,7 +36,7 @@ export function Scoreboard({
         <button className={styles.actionButton} onClick={onPause} aria-label="Pause game">
           <Pause size={24} />
         </button>
-        <button className={styles.actionButton} onClick={onRestart} aria-label="Restart game">
+        <button className={styles.actionButton} onClick={onReset} aria-label="Restart game">
           <RotateCcw size={24} />
         </button>
       </div>

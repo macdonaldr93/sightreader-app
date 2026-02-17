@@ -111,7 +111,7 @@ function App() {
           <div className={styles.topRow}>
             <Scoreboard
               score={score}
-              onRestart={startGame}
+              onReset={resetGame}
               canReview={canReview}
               isReviewMode={isReviewMode}
               onReview={toggleReview}
